@@ -19,11 +19,11 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 		 * @param state
 		 */
 		setState : function(state) {
-			var changeServer = document.getElementById(ns.config.data.HTML_IDS.CHANGE_SERVER),
-				logger = document.getElementById(ns.config.data.HTML_IDS.LOGGER),
-				profiler = document.getElementById(ns.config.data.HTML_IDS.PROFILER),
+			var changeServer = document.getElementById(ns.config.data.HTML_IDS.CHANGE_SERVER.ROOT),
+				logger = document.getElementById(ns.config.data.HTML_IDS.LOGGER.ROOT),
+				profiler = document.getElementById(ns.config.data.HTML_IDS.PROFILER.ROOT),
 				screenShotter = document.getElementById(ns.config.data.HTML_IDS.SCREENSHOTTER.ROOT),
-				menu = document.getElementById(ns.config.data.HTML_IDS.MENU);
+				menu = document.getElementById(ns.config.data.HTML_IDS.MENU.ROOT);
 
 			changeServer.style.display = 'none';
 			logger.style.display = 'none';

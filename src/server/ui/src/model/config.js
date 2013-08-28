@@ -14,10 +14,18 @@ NSModuleLoader.add([ 'ns.frameWork.Class' ], function () {
 			 */
 			this.data = {
 				HTML_IDS : {
-					MENU          : "screen.menu",
-					CHANGE_SERVER : "screen.change_server",
-					LOGGER        : "screen.logger",
-					PROFILER      : "screen.profiler",
+					MENU          : {
+						ROOT: "screen.menu"
+					},
+					CHANGE_SERVER : {
+						ROOT: "screen.change_server"
+					},
+					LOGGER        : {
+						ROOT: "screen.logger"
+					},
+					PROFILER      : {
+						ROOT: "screen.profiler"
+					},
 					SCREENSHOTTER : {
 						ROOT  : "screen.screenshotter",
 						IMAGE : "screen.screenshotter.image"
@@ -48,6 +56,7 @@ NSModuleLoader.add([ 'ns.frameWork.Class' ], function () {
 		 * @private
 		 */
 		loadConfig : function () {
+
 			//localStorage.clear();
 			if (typeof localStorage !== 'undefined') {
 				var item = localStorage.getItem("remoteTools");
