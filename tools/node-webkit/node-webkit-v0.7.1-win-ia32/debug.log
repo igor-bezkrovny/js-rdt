@@ -1,0 +1,4 @@
+[6432:0829/014447:INFO:CONSOLE(107)] "NSModuleLoader: all dependencies successfully resolved", source: file:///C:/Projects/My/GitHub/js-rdt/src/server/ui/NSModuleLoader.js (107)
+[6432:0829/014448:INFO:CONSOLE(89)] "create server", source: file:///C:/Projects/My/GitHub/js-rdt/src/server/ui/src/controller/Controller.js (89)
+[6432:0829/014448:INFO:CONSOLE(120)] "server listening: host = 127.0.0.1, port = 8008", source: C:\Projects\My\GitHub\js-rdt\src\server\nodejs\server.js (120)
+[6432:0829/014451:INFO:CONSOLE(19)] "25266", source: file:///C:/Projects/My/GitHub/js-rdt/src/server/ui/src/controller/modes/ScreenShotter.js (19)

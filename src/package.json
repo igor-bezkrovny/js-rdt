@@ -1,12 +1,12 @@
 {
-	"name" : "solitaire",
+	"name" : "js-rdt",
 	"main" : "server/ui/index.html",
-	"description" : "remote javascript tools",
+	"description" : "Remote JavaScript ToolKit",
 	"version" : "1.1",
 	"single-instance" : true,
 	"nodejs" : true,
 	"window" : {
-		"title" : "remote javascript tools",
+		"title" : "Remote JavaScript ToolKit, v1.1",
 		"toolbar" : false,
 		"frame" : true,
 		"width" : 1280,

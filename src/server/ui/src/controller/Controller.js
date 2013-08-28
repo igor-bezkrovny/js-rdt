@@ -89,7 +89,6 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 			console.log("create server");
 			ns.server.create(ns.config.data.network.host, ns.config.data.network.port);
 
-			ns.server.get("/ttt.js", this, ns.server.serveFileHandler("client/ttt.js"));
 			ns.server.get("/remoteUtils.js", this, ns.server.serveFileHandler("client/remoteUtils.js"));
 			ns.server.get("/html2canvas.js", this, ns.server.serveFileHandler("client/html2canvas.js"));
 			ns.server.get("/stacktrace.js", this, ns.server.serveFileHandler("client/stacktrace.js"));

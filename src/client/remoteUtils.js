@@ -83,9 +83,10 @@
 
 		send : {
 			log : function (msg) {
-				oldConsole.log.apply(oldConsole, arguments);
+				//oldConsole.log.apply(oldConsole, arguments);
 				if(URL === null) {
-					oldConsole.log("RDT: call remoteUtils.setServerURL first!");
+					console.log("RDT: call remoteUtils.setServerURL first!");
+					//oldConsole.log("RDT: call remoteUtils.setServerURL first!");
 					return;
 				}
 				/*serverHelper.addDataToQueue(
@@ -151,7 +152,7 @@
 		}
 	};
 
-	var oldConsole = console;
+	/*var oldConsole = console;
 	try {
 		global.console = {
 			log : remoteUtils.send.log,
@@ -160,6 +161,6 @@
 		};
 	} catch(e) {
 
-	}
+	} */
 
 })(window);

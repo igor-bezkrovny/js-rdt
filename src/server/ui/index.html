@@ -120,15 +120,18 @@
 		<input id="screen.change_server.start" type="button" value="Start Server"/>
 		<textarea id="screen.change_server.help" readonly="true" cols="154" rows="40" class="log">
 How to configure and start SERVER:
-1) check IP address of PC (run cmd.exe and type ipconfig[ENTER]
-2) fill this form with IP address, leave port 8008 as is
+1) check IP address of PC (run cmd.exe and type ipconfig[ENTER])
+2) fill form above with IP address, leave port 8008 as is
 3) click START SERVER
 
 How to send logs from TV application:
 1) include script 'remoteUtils.js' in Application's index.html before any other script
 2) after include authenticate client (change IP address below to IP address of Your PC):
-	remoteUtils.setServerURL('http://192.168.40.100:8008');
-3) Use from javascript: remoteUtils.logger.log('Something goes wrong here!');
+			remoteUtils.setServerURL('http://192.168.40.100:8008');
+3) Use on client javascript:
+			remoteUtils.send.log('Something goes wrong here!');
+4) Use on client javascript:
+			remoteUtils.send.screenShot(document.body, 1920, 1080);
 		</textarea>
     </div>
 	<div id="screen.menu">
