@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<script src="http://192.168.40.100:8008/remoteUtils.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<script>
+			remoteUtils.setServerURL("http://192.168.40.100:8008");
+			setInterval(function() {
+				if(Math.random() < 0.3) {
+					remoteUtils.logger.log("Hi! " + Date.now());
+				} else if (Math.random() < 0.05) {
+					var u = undefined;
+					u();
+				}
+			}, 50);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script src="frameWork/TGModuleLoader.js"></script>
+	<script src="frameWork/Class.js"></script>
+	<script src="frameWork/utils.js"></script>
+	<script src="frameWork/debug/profiler.js"></script>
+
+	<script src="server/server.js"></script>
+
+	<script src="src/model/config.js"></script>
+	<script src="src/model/Model.js"></script>
+	<script src="src/model/modes/Logger.js"></script>
+	<script src="src/model/modes/Profiler.js"></script>
+	<script src="src/model/modes/ScreenShotter.js"></script>
+
+	<script src="src/view/View.js"></script>
+
+	<script src="src/controller/Controller.js"></script>
+	<script src="src/controller/modes/ChangeServer.js"></script>
+	<script src="src/controller/modes/Logger.js"></script>
+	<script src="src/controller/modes/Profiler.js"></script>
+	<script src="src/controller/modes/ScreenShotter.js"></script>
+
+	<script>
+		window.onload = function() {
+			TGModuleLoader.resolve();
+			var controller = new ns.controller.Controller();
+		};
+	</script>
+
+	<style type="text/css">
+		#screen.change_server {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 999999;
+		}
+
+		#screen.logger {
+			position: fixed;
+			top: 50px;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		#screen.profiler {
+			position: fixed;
+			top: 50px;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		#screen.menu {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		#screen.screenshotter {
+			position: fixed;
+			top: 50px;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.log {
+			position: fixed;
+			top: 60px;
+			left: 10px;
+		}
+
+	</style>
+</head>
+<body>
+
+    <div id="screen.change_server">
+		<input id="screen.change_server.host" type="text"/>
+		<input id="screen.change_server.port" type="text"/>
+		<input id="screen.change_server.start" type="button" value="Start Server"/>
+		<textarea id="screen.change_server.help" readonly="true" cols="154" rows="40" class="log">
+How to configure and start SERVER:
+1) check IP address of PC (run cmd.exe and type ipconfig[ENTER]
+2) fill this form with IP address, leave port 8008 as is
+3) click START SERVER
+
+How to send logs from TV application:
+1) include script 'remoteUtils.js' in Application's index.html before any other script
+2) after include authenticate client (change IP address below to IP address of Your PC):
+	remoteUtils.setServerURL('http://192.168.40.100:8008');
+3) Use from javascript: remoteUtils.logger.log('Something goes wrong here!');
+		</textarea>
+    </div>
+	<div id="screen.menu">
+		<input id="screen.menu.change_server" type="button" value="Change Server"/>
+		<input id="screen.menu.logger" type="button" value="Logger"/>
+		<input id="screen.menu.profiler" type="button" value="Profiler"/>
+		<input id="screen.menu.screenshotter" type="button" value="Screen Shot Master"/>
+	</div>
+    <div id="screen.logger">
+		<input id="screen.logger.clear" type="button" value="Clear Log"/>
+		<input id="screen.logger.pause" type="button" value="Pause Log Update"/>
+		<input id="screen.logger.filter" type="text" value=""/>
+		<textarea id="screen.logger.log" readonly="true" cols="154" rows="40" class="log"></textarea>
+    </div>
+	<div id="screen.profiler">
+	</div>
+	<div id="screen.screenshotter">
+	</div>
+
+</body>
+</html>
