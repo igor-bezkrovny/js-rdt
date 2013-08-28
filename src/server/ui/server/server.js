@@ -1,4 +1,4 @@
-TGModuleLoader.add(null, function() {
+NSModuleLoader.add(null, function() {
 
 	ns.server = require("../nodejs/server");
 

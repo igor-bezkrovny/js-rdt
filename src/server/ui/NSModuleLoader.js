@@ -1,10 +1,10 @@
 // create global nameSpace.
-// To be sure, that there is no javascript files Before TGModuleLoader
+// To be sure, that there is no javascript files Before NSModuleLoader
 // we create nameSpace object without checking if it is already exists!
 
 var ns = {};
 
-var TGModuleLoader;
+var NSModuleLoader;
 (function() {
 
 	/**
@@ -70,7 +70,7 @@ var TGModuleLoader;
 		return loadedModulesNum;
 	}
 
-	TGModuleLoader = {
+	NSModuleLoader = {
 		/**
 		 * @public
 		 * @param {Array.<string>} requirementsArray
@@ -100,11 +100,11 @@ var TGModuleLoader;
 					for(var i = 0; i < modules.length; i++) {
 						console.log(modules[i].callBack.toString());
 					}
-					throw "TGModuleLoader: can't resolve dependencies for all modules";
+					throw "NSModuleLoader: can't resolve dependencies for all modules";
 					break;
 				}
 			}
-			console.log("TGModuleLoader: all dependencies successfully resolved");
+			console.log("NSModuleLoader: all dependencies successfully resolved");
 		}
 	};
 

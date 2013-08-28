@@ -1,4 +1,4 @@
-TGModuleLoader.add( [ 'ns.frameWork.utils', 'ns.frameWork.Class' ], function () {
+NSModuleLoader.add( [ 'ns.frameWork.utils', 'ns.frameWork.Class' ], function () {
 	ns.frameWork = ns.frameWork || {};
 	ns.frameWork.debug = ns.frameWork.debug || {};
 

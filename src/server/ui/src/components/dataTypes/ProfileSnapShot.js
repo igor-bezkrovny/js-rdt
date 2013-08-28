@@ -1,4 +1,4 @@
-TGModuleLoader.add([ 'ns.components.dataTypes.AbstractTime' ], function () {
+NSModuleLoader.add([ 'ns.components.dataTypes.AbstractTime' ], function () {
 
 	ns.components = ns.components || {};
 	ns.components.dataTypes = ns.components.dataTypes || {};

@@ -1,4 +1,4 @@
-TGModuleLoader.add([ 'ns.frameWork.Class' ], function () {
+NSModuleLoader.add([ 'ns.frameWork.Class' ], function () {
 
 	ns.components = ns.components || {};
 	ns.components.dataTypes = ns.components.dataTypes || {};

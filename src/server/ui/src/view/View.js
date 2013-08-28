@@ -1,4 +1,4 @@
-TGModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
+NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 
 	ns.view = ns.view || {};
 

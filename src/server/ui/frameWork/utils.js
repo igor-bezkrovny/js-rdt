@@ -1,4 +1,4 @@
-TGModuleLoader.add([ 'ns.frameWork.Class' ], function () {
+NSModuleLoader.add([ 'ns.frameWork.Class' ], function () {
 	ns.frameWork = ns.frameWork || {};
 
 	var uniqueId = 1;

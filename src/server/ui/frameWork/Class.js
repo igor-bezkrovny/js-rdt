@@ -8,7 +8,7 @@
  * - added checking for ABSTRACT_CLASS
  * (if child/base class has any property that equals Class.ABSTRACT_METHOD, new Class will throw error)
  */
-TGModuleLoader.add(null, function () {
+NSModuleLoader.add(null, function () {
 	ns.frameWork = ns.frameWork || {};
 
 	var initializing = false, fnTest = /xyz/.test(function () {xyz;}) ? /\b_super\b/ : /.*/;
