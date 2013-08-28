@@ -5,7 +5,7 @@ js-rdt
 helps JavaScript developer debug/develop application.
 
 **Target platforms:**
- Any devices with luck of abilities listed below.
+ Any devices with lack of abilities listed below.
  (I use js-rdt for debugging HTML5 games on SmartTV devices)
 
 **Plan:**
