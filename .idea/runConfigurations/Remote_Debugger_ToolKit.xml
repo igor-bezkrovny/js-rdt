@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Remote Debugger ToolKit" type="NodeJSConfigurationType" factoryName="Node.js" singleton="true" path-to-node="$PROJECT_DIR$/tools/node-webkit/node-webkit-v0.7.1-win-ia32/nw" path-to-js-file="src/server/nodejs/server.js" node-parameters="src" working-dir="$PROJECT_DIR$">
+    <RunnerSettings RunnerId="NodeJS.debug" />
+    <ConfigurationWrapper RunnerId="NodeJS.debug" />
+    <method />
+  </configuration>
+</component>

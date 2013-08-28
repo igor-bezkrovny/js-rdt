@@ -22,7 +22,7 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 			var changeServer = document.getElementById(ns.config.data.HTML_IDS.CHANGE_SERVER),
 				logger = document.getElementById(ns.config.data.HTML_IDS.LOGGER),
 				profiler = document.getElementById(ns.config.data.HTML_IDS.PROFILER),
-				screenShotter = document.getElementById(ns.config.data.HTML_IDS.SCREENSHOTTER),
+				screenShotter = document.getElementById(ns.config.data.HTML_IDS.SCREENSHOTTER.ROOT),
 				menu = document.getElementById(ns.config.data.HTML_IDS.MENU);
 
 			changeServer.style.display = 'none';

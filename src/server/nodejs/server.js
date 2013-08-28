@@ -70,7 +70,7 @@
 							res.end(body);
 						};
 						res.simpleText = function (code, text) {
-							console.log(text);
+							//console.log("IP: " + req.connection.remoteAddress);
 							res.writeHead(code, {
 								"Content-Type": "text/plain",
 								"Content-Length": text.length,

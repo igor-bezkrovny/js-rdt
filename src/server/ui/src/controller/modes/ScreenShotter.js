@@ -14,6 +14,18 @@ NSModuleLoader.add([ 'ns.frameWork.Class' ], function () {
 			this.controller = controller;
 		},
 
+		updateData : function(id, dataObject) {
+			var el = document.getElementById(ns.config.data.HTML_IDS.SCREENSHOTTER.IMAGE);
+			console.log(dataObject.dataURL.length);
+			el.src = dataObject.dataURL;
+			el.style.width = dataObject.width + "px";
+			el.style.height = dataObject.height + "px";
+			/*var ctx = el.getContext("2d");
+			el.width = "1280px";
+			el.height = "720px";
+			ctx.putImageData(atob(dataObject.dataURL), 0, 0);*/
+		},
+
 		onMouseClick : function(e) {
 			if(e && e.target && e.target.id) {
 				this.applyId(e.target.id);

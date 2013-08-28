@@ -6,11 +6,11 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 	 * @public
 	 * @class ns.controller.Controller
 	 */
-	ns.controller.Controller = ns.frameWork.Class.createChild( /** @lends {ns.controller.Controller} */ {
+	ns.controller.Controller = ns.frameWork.Class.createChild(/** @lends {ns.controller.Controller} */ {
 		/**
 		 * @constructs
 		 */
-		init : function() {
+		init : function () {
 			this.associatedClients = [];
 
 			this.model = new ns.model.Model();
@@ -27,11 +27,11 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 			this.setState(ns.config.data.STATES.CHANGE_SERVER);
 		},
 
-		onKeyDown : function(e) {
-			if(!e) {
+		onKeyDown : function (e) {
+			if (!e) {
 				e = window.event;
 			}
-			switch(this.state) {
+			switch (this.state) {
 				case ns.config.data.STATES.CHANGE_SERVER:
 					this.changeServer.onKeyDown(e);
 					break;
@@ -47,11 +47,11 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 			}
 		},
 
-		onMouseClick : function(e) {
-			if(!e) {
+		onMouseClick : function (e) {
+			if (!e) {
 				e = window.event;
 			}
-			switch(this.state) {
+			switch (this.state) {
 				case ns.config.data.STATES.CHANGE_SERVER:
 					this.changeServer.onMouseClick(e);
 					break;
@@ -71,12 +71,12 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 		 * @private
 		 * @param state
 		 */
-		setState : function(state) {
+		setState : function (state) {
 			this.state = state;
 			this.view.setState(state);
 		},
 
-		stopServer : function() {
+		stopServer : function () {
 			ns.server.close();
 		},
 
@@ -85,12 +85,13 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 		 * @param host
 		 * @param port
 		 */
-		startServer : function() {
+		startServer : function () {
 			console.log("create server");
 			ns.server.create(ns.config.data.network.host, ns.config.data.network.port);
 
 			ns.server.get("/ttt.js", this, ns.server.serveFileHandler("client/ttt.js"));
 			ns.server.get("/remoteUtils.js", this, ns.server.serveFileHandler("client/remoteUtils.js"));
+			ns.server.get("/html2canvas.js", this, ns.server.serveFileHandler("client/html2canvas.js"));
 			ns.server.get("/stacktrace.js", this, ns.server.serveFileHandler("client/stacktrace.js"));
 			ns.server.get("/index.html", this, ns.server.serveFileHandler("client/index.html"));
 			ns.server.get("/index.htm", this, ns.server.serveFileHandler("client/index.html"));
@@ -98,35 +99,50 @@ NSModuleLoader.add([ 'ns.frameWork.Class', 'ns.config' ], function () {
 
 			ns.server.post("/logger", this, function (req, res, requestQueryStringObject, requestBodyObject) {
 				var id;
-				if(typeof req.headers['X-Forwarded-For'] !== 'undefined') {
+				if (typeof req.headers['X-Forwarded-For'] !== 'undefined') {
 					id = req.headers['X-Forwarded-For'];
 				} else {
 					id = req.connection.remoteAddress;
 				}
-				if(requestBodyObject && typeof this.associatedClients[id] !== 'undefined') {
-					for(var i = 0; i < requestBodyObject.list.length; i++) {
-						this.logger.updateData(id, requestBodyObject.list[i]);
+				if (requestBodyObject && typeof this.associatedClients[id] !== 'undefined') {
+					for (var i = 0; i < requestBodyObject.length; i++) {
+						this.logger.updateData(id, requestBodyObject[i]);
 					}
+				}
+				res.simpleText(200, "OK");
+			});
+
+			ns.server.post("/screenShotter", this, function (req, res, requestQueryStringObject, requestBodyObject) {
+				var id;
+				if (typeof req.headers['X-Forwarded-For'] !== 'undefined') {
+					id = req.headers['X-Forwarded-For'];
+				} else {
+					id = req.connection.remoteAddress;
+				}
+				if (requestBodyObject && typeof this.associatedClients[id] !== 'undefined') {
+					this.screenShotter.updateData(id, requestBodyObject);
 				}
 				res.simpleText(200, "OK");
 			});
 			ns.server.post("/authenticate", this, function (req, res, requestQueryStringObject, requestBodyObject) {
 				res.simpleText(200, "OK");
 
-				var id;
-				if(typeof req.headers['X-Forwarded-For'] !== 'undefined') {
-					id = req.headers['X-Forwarded-For'];
-				} else {
-					id = req.connection.remoteAddress;
-				}
-				this.logger.registerClient(id);
-				this.associatedClients[id] = true;
+				if (requestBodyObject) {
+					var id;
+					if (typeof req.headers['X-Forwarded-For'] !== 'undefined') {
+						id = req.headers['X-Forwarded-For'];
+					} else {
+						id = req.connection.remoteAddress;
+					}
+					this.logger.registerClient(id);
+					this.associatedClients[id] = true;
 
-				this.logger.updateData(id, { time: Date.now(), text: "userAgent: " + requestBodyObject.list[0].ua });
-				this.logger.updateData(id, { time: Date.now(), text: "product:   " + requestBodyObject.list[0].product });
-				this.logger.updateData(id, { time: Date.now(), text: "platform:  " + requestBodyObject.list[0].platform });
-				this.logger.updateData(id, { time: Date.now(), text: "os:        " + requestBodyObject.list[0].os });
-				this.logger.updateData(id, { time: Date.now(), text: "url:       " + requestBodyObject.list[0].url });
+					this.logger.updateData(id, { time : Date.now(), text : "userAgent: " + requestBodyObject.ua });
+					this.logger.updateData(id, { time : Date.now(), text : "product:   " + requestBodyObject.product });
+					this.logger.updateData(id, { time : Date.now(), text : "platform:  " + requestBodyObject.platform });
+					this.logger.updateData(id, { time : Date.now(), text : "os:        " + requestBodyObject.os });
+					this.logger.updateData(id, { time : Date.now(), text : "url:       " + requestBodyObject.url });
+				}
 			});
 
 			ns.server.post("/profiler", this, function (req, res, requestQueryStringObject, requestBodyObject) {
